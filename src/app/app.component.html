@@ -1,4 +1,79 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<h1>Start Editing to see the Magic !!</h1>
+{{ title }}
+<!-- handlebars -->
+<!-- Data Binding -->
+{{ show }}
+<p *ngIf="show; else bla">Hello to Angular World...</p>
+<ng-template #bla>
+  <p>no show</p>
+</ng-template>
+<hr />
+{{ skills }}
+<ul>
+  <li>{{ skills[0] }}</li>
+  <li>{{ skills[1] }}</li>
+  <li>{{ skills[2] }}</li>
+</ul>
+<ul>
+  <li *ngFor="let val of skills">
+    {{ val }}
+  </li>
+</ul>
+
+DropDown of Skills:
+<select>
+  <option>---select---</option>
+  <option *ngFor="let val of skills">{{ val }}</option>
+</select>
+<br /><br />
+
+{{ empData }}
+<br /><br />
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>{{ empData[0].id }}</td>
+    <td>{{ empData[0].name }}</td>
+    <td>{{ empData[0].age }}</td>
+  </tr>
+  <tr>
+    <td>{{ empData[1].id }}</td>
+    <td>{{ empData[1].name }}</td>
+    <td>{{ empData[1].age }}</td>
+  </tr>
+  <tr>
+    <td>{{ empData[2].id }}</td>
+    <td>{{ empData[2].name }}</td>
+    <td>{{ empData[2].age }}</td>
+  </tr>
+</table>
+
+<br />
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+
+  <tr *ngFor="let val of empData">
+    <td>{{ val.id }}</td>
+    <td>{{ val.name }}</td>
+    <td>{{ val.age }}</td>
+  </tr>
+</table>
+
+<br />
+Control Varible: {{ show }} <br />
+<button type="button" (click)="handleShow()">Show</button>
+<button type="button" (click)="handleHide()">Hide</button>
+<br /><br />
+Or Use the Magical Toggle Button: <br /><br />
+<button type="button" (click)="handleToggle()">
+  {{ show ? 'Hide' : 'Show' }}
+</button>
+<p *ngIf="show">Some message to show....</p>
